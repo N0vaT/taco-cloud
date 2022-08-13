@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Taco Cloud</title>
+</head>
+
+<body>
+    <form method="post" th:action="@{/orders}" th:object="${tacoOrder}">
+        <h1>Заявка на созание тако готова!</h1>
+        <img th:src="@{/images/Tako.jpg}" height="200" width="400"/>
+
+        <h3>Заявка на тако:</h3>
+        <ul>
+            <li th:each="taco: ${tacoOrder.tacos}">
+                <span th:text="${taco.name}">Название тако</span>
+            </li>
+        </ul>
+        <a th:href="@{/design}">Добавить ещё тако</a><br/>
+
+
+        <h3>Доставкв моего выбранного тако ...</h3>
+        <label for="deliveryName">Имя: </label>
+        <input type="text" th:field="*{deliveryName}" id="deliveryName"/>
+        <br/><br/>
+
+        <label for="deliveryState">Штат доставки: </label>
+        <input type="text" th:field="*{deliveryState}" id="deliveryState"/>
+        <br/><br/>
+
+        <label for="deliveryCity">Город доставки: </label>
+        <input type="text" th:field="*{deliveryCity}" id="deliveryCity"/>
+        <br/><br/>
+
+        <label for="deliveryStreet">Улица доставки: </label>
+        <input type="text" th:field="*{deliveryStreet}" id="deliveryStreet"/>
+        <br/><br/>
+
+        <label for="deliveryZip">Индекс: </label>
+        <input type="text" th:field="*{deliveryZip}" id="deliveryZip"/>
+        <br/>
+        <hr>
+
+        <h3>Способ оплаты...</h3>
+        <label for="ccNumber">Номер карты</label>
+        <input type="text" th:field="*{ccNumber}" id="ccNumber"/>
+        <br/><br/>
+
+        <label for="ccExpiration">Срок действия карты: </label>
+        <input type="text" th:field="*{ccExpiration}" id="ccExpiration"/>
+        <br/><br/>
+
+        <label for="ccCVV">CVV: </label>
+        <input type="text" th:field="*{ccCVV}" id="ccCVV"/>
+        <br/><br/>
+
+        <input type="submit" value="Отправить заявку"/>
+    </form>
+</body>
+</html>
