@@ -54,8 +54,10 @@
         <div>
             <h3>Придумайте название для своего тако:</h3>
             <input type="text" th:field="*{name}"/>
+            <span style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">ValidError</span>
             <br/>
             <button>Отправить тако</button>
+            <span style="color:red" th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}">ValidError</span>
         </div>
     </div>
 </form>

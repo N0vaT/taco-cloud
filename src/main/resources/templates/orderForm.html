@@ -23,36 +23,44 @@
         <h3>Доставкв моего выбранного тако ...</h3>
         <label for="deliveryName">Имя: </label>
         <input type="text" th:field="*{deliveryName}" id="deliveryName"/>
+        <span style="color:red" th:if="${#fields.hasErrors('deliveryName')}" th:errors="*{deliveryName}">ValidError</span>
         <br/><br/>
 
         <label for="deliveryState">Штат доставки: </label>
         <input type="text" th:field="*{deliveryState}" id="deliveryState"/>
+        <span style="color:red" th:if="${#fields.hasErrors('deliveryState')}" th:errors="*{deliveryState}">ValidError</span>
         <br/><br/>
 
         <label for="deliveryCity">Город доставки: </label>
         <input type="text" th:field="*{deliveryCity}" id="deliveryCity"/>
+        <span style="color:red" th:if="${#fields.hasErrors('deliveryCity')}" th:errors="*{deliveryCity}">ValidError</span>
         <br/><br/>
 
         <label for="deliveryStreet">Улица доставки: </label>
         <input type="text" th:field="*{deliveryStreet}" id="deliveryStreet"/>
+        <span style="color:red" th:if="${#fields.hasErrors('deliveryStreet')}" th:errors="*{deliveryStreet}">ValidError</span>
         <br/><br/>
 
         <label for="deliveryZip">Индекс: </label>
         <input type="text" th:field="*{deliveryZip}" id="deliveryZip"/>
+        <span style="color:red" th:if="${#fields.hasErrors('deliveryZip')}" th:errors="*{deliveryZip}">ValidError</span>
         <br/>
         <hr>
 
         <h3>Способ оплаты...</h3>
         <label for="ccNumber">Номер карты</label>
         <input type="text" th:field="*{ccNumber}" id="ccNumber"/>
+        <span style="color:red" th:if="${#fields.hasErrors('ccNumber')}" th:errors="*{ccNumber}">ValidErrors</span>
         <br/><br/>
 
         <label for="ccExpiration">Срок действия карты: </label>
         <input type="text" th:field="*{ccExpiration}" id="ccExpiration"/>
+        <span style="color:red" th:if="${#fields.hasErrors('ccExpiration')}" th:errors="*{ccExpiration}">ValidError</span>
         <br/><br/>
 
         <label for="ccCVV">CVV: </label>
         <input type="text" th:field="*{ccCVV}" id="ccCVV"/>
+        <span style="color:red" th:if="${#fields.hasErrors('ccCVV')}" th:errors="*{ccCVV}">ValidError</span>
         <br/><br/>
 
         <input type="submit" value="Отправить заявку"/>
