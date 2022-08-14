@@ -17,6 +17,6 @@ public class Taco {
     @NotNull
     @Size(min = 1, message = "Выберети хотя бы 1 ингридиет")
     private List<Ingredient> ingredients;
-    private LocalDateTime createdAt= LocalDateTime.now();
+    private LocalDateTime createdAt;
 
 }
