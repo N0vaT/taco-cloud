@@ -6,12 +6,16 @@ import org.hibernate.validator.constraints.CreditCardNumber;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 public class TacoOrder {
 
+    private static final long serialVersionUID = 1L;
+
+    private Long id;
     @NotBlank(message = "Обязательное поле")
     private String deliveryName;
     @NotBlank(message = "Обязательное поле")
@@ -28,6 +32,8 @@ public class TacoOrder {
     private String ccExpiration;
     @Digits(integer = 3,fraction = 0, message = "Введите CVV. Пример - 123")
     private String ccCVV;
+
+    private LocalDateTime placedAt;
 
     private List<Taco> tacos = new ArrayList<>();
 

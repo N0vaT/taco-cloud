@@ -1,8 +1,8 @@
 package com.nova.tacocloud.controllers;
 
+import com.nova.tacocloud.domain.Ingredient;
 import com.nova.tacocloud.domain.Taco;
 import com.nova.tacocloud.domain.TacoOrder;
-import com.nova.tacocloud.domain.Type;
 import com.nova.tacocloud.services.IngredientService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class DesignTacoController {
 
     @ModelAttribute
     public void addIngredientsToModel(Model model){
-        for(Type type: Type.values()){
+        for(Ingredient.Type type: Ingredient.Type.values()){
             model.addAttribute(type.toString().toLowerCase(), ingredientService.filterByType(type));
         }
     }
