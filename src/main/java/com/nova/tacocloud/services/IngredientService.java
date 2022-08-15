@@ -1,13 +1,12 @@
 package com.nova.tacocloud.services;
 
 import com.nova.tacocloud.dao.IngredientRepository;
-import com.nova.tacocloud.dao.IngredientRepositoryJdbc;
 import com.nova.tacocloud.domain.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class IngredientService {
@@ -19,6 +18,7 @@ public class IngredientService {
         this.ingredientRepo = ingredientRepo;
     }
 
+    @Transactional(readOnly = true)
     public Iterable<Ingredient> findAll(){
 //        List<Ingredient> ingredients = Arrays.asList(
 //                new Ingredient("FLTO", "Мучная лепешка", Ingredient.Type.WRAP),
@@ -34,7 +34,8 @@ public class IngredientService {
         return ingredientRepo.findAll();
     }
 
+    @Transactional(readOnly = true)
     public List<Ingredient> filterByType(Ingredient.Type type) {
-        return ((List<Ingredient>)findAll()).stream().filter(x -> x.getType().toString().equals(type.toString())).collect(Collectors.toList());
+        return ingredientRepo.findByType(type);
     }
 }
