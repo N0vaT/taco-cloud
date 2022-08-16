@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS Taco_User;
 DROP TABLE IF EXISTS Taco_Ingredient;
 DROP TABLE IF EXISTS Ingredient;
 DROP TABLE IF EXISTS Taco;
@@ -43,4 +44,18 @@ CREATE TABLE IF NOT EXISTS Taco_Ingredient
     PRIMARY KeY (taco_id, ingredient_id),
     CONSTRAINT FK_Taco FOREIGN KEY (taco_id) REFERENCES Taco (id),
     CONSTRAINT FK_Ingredient FOREIGN KEY (ingredient_id) REFERENCES Ingredient (id)
+);
+
+CREATE TABLE IF NOT EXISTS Taco_User
+(
+    user_id serial,
+    user_name varchar(20) not null,
+    user_password varchar(100) not null,
+    user_ful_name varchar(60) not null,
+    user_street varchar(50) not null,
+    user_city varchar(30) not null,
+    user_state varchar(30) not null,
+    user_zip varchar(10) not null,
+    user_phone_number varchar(20) not null,
+    PRIMARY KeY (user_id)
 );
