@@ -5,10 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -18,12 +17,14 @@ import javax.persistence.Table;
 public class Ingredient {
 
     @Id
-    private final String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private final Long id;
     @Column(name = "name")
     private final String name;
     @Column(name = "type")
+    @Enumerated(EnumType.STRING)
     private final Type type;
-
 
     public enum Type {
         WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE

@@ -8,6 +8,6 @@ import java.util.List;
 
 
 @Repository
-public interface IngredientRepository extends JpaRepository<Ingredient, String> {
+public interface IngredientRepository extends JpaRepository<Ingredient, Long> {
     List<Ingredient> findByType(Ingredient.Type type);
 }

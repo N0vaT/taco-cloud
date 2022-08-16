@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -14,7 +15,7 @@ import java.util.List;
 public class Taco {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     @NotNull
@@ -23,10 +24,15 @@ public class Taco {
     private String name;
     @NotNull
     @Size(min = 1, message = "Выберети хотя бы 1 ингридиет")
-    @ManyToMany()
-    private List<Ingredient> ingredients;
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinTable(name = "Taco_Ingredient", joinColumns = @JoinColumn(name = "taco_id"), inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
+    private List<Ingredient> ingredients = new ArrayList<>();
     @Column(name = "created_at")
     private LocalDateTime createdAt=LocalDateTime.now();
+
+//    @ManyToOne()
+//    @JoinColumn(name = "taco_order_id")
+//    private TacoOrder tacoOrder;
 
     public void addIngredient(Ingredient ingredient){
         this.ingredients.add(ingredient);
