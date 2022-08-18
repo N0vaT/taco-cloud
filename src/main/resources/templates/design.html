@@ -9,7 +9,7 @@
 <body>
 <h1>Собери свой тако!</h1>
 <img th:src="@{/images/Tako.jpg}" height="200" width="400"/>
-<form th:method="post" th:object="${taco}">
+<form th:method="post" th:object="${taco}" th:action="@{/design}">
     <div class="grid">
         <div class="ingredient-group" id="wraps">
             <h3>Выберете лепешку:</h3>

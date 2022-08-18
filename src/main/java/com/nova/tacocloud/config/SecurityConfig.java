@@ -50,7 +50,6 @@ public class SecurityConfig {
                 .loginPage("/login")
                 .defaultSuccessUrl("/design", true)
                 .and()
-                .csrf().disable()
                 .build();
     }
 
