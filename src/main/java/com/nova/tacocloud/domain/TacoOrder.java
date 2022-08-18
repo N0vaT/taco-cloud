@@ -54,6 +54,10 @@ public class TacoOrder {
     @JoinColumn(name = "taco_order_id")
     private List<Taco> tacos = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 
     public void addTaco(Taco taco){
         this.tacos.add(taco);

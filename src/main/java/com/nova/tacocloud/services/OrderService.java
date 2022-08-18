@@ -6,6 +6,7 @@ import com.nova.tacocloud.dao.TacoRepository;
 import com.nova.tacocloud.domain.Ingredient;
 import com.nova.tacocloud.domain.Taco;
 import com.nova.tacocloud.domain.TacoOrder;
+import com.nova.tacocloud.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +25,8 @@ public class OrderService {
     @Autowired
     private IngredientRepository ingredientRepository;
 
-    public void save(TacoOrder tacoOrder, List<Taco> tacos) {
+    public void save(TacoOrder tacoOrder, User user) {
+        tacoOrder.setUser(user);
         tacoOrder.setPlacedAt(LocalDateTime.now());
 
         orderRepository.saveAndFlush(tacoOrder);

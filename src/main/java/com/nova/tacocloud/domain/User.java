@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 @Data
 @Entity
@@ -41,6 +42,9 @@ public class User implements UserDetails {
     private final String zip;
     @Column(name = "user_phone_number")
     private final String phoneNumber;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+    List<TacoOrder> tacoOrder;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
